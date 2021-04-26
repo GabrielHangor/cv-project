@@ -1,19 +1,12 @@
 import React, { Component } from 'react';
 import MainInfo from './Components/InputForm/MainInfo';
+import PreviewHeader from './Components/Preview/PreviewHeader';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      mainInfo: {
-        firstName: '',
-        lastName: '',
-        photo: '',
-        address: '',
-        phoneNumber: '',
-        email: '',
-        description: '',
-      },
+      mainInfo: {},
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -41,7 +34,9 @@ class App extends Component {
               mainInfoState={this.state.mainInfo}
             />
           </div>
-          <div className="preview"></div>
+          <div className="preview">
+            <PreviewHeader mainInfoState={this.state.mainInfo} />
+          </div>
         </main>
       </div>
     );
