@@ -29,7 +29,7 @@ body {
 
 .inner-container {
   width: 90%;
-  height: 100%;
+  min-height: 92vh;
   display: flex;
   justify-content: space-between;
 }
@@ -76,6 +76,20 @@ body {
   font-size: 1rem;
   font-family: 'Poppins', sans-serif;
   border: none;
+}
+
+.photo-input-label {
+  background-color: white;
+  cursor: pointer;
+  width: 95%;
+  height: 2rem;
+  border-radius: 6px;
+  padding-left: 5px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  border: none;
+  line-height: 2rem;
+  color: #000000a1;
 }
 
 input[type='textarea'] {
@@ -127,9 +141,9 @@ input[type='textarea'] {
   flex-direction: column;
 }
 
-.preview-personal > p {
+.preview-personal > h4 {
   border-bottom: 2px solid dodgerblue;
-  color: rgb(20, 62, 114);
+  color: black;
   font-size: 1.2rem;
   text-align: center;
 }
@@ -143,4 +157,12 @@ input[type='textarea'] {
 
 .preview-photo {
   width: 100%;
+}
+
+.personal-details {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  row-gap: 0.5rem;
 }

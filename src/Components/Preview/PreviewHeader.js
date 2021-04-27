@@ -6,10 +6,10 @@ function PreviewHeader({ mainInfoState }) {
   return (
     <header className="preview-header">
       <h1>
-        {firstName && firstName} {``}
-        {lastName && lastName}
+        {firstName} {``}
+        {lastName}
       </h1>
-      <h4>{title && title}</h4>
+      <h4>{title}</h4>
     </header>
   );
 }

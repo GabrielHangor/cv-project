@@ -1,6 +1,6 @@
 import React from 'react';
 
-function MainInfo({ handleInputChange, mainInfoState }) {
+function MainInfo({ handleInputChange }) {
   return (
     <div className="form-group">
       <h2>Personal Information</h2>
@@ -23,16 +23,22 @@ function MainInfo({ handleInputChange, mainInfoState }) {
           placeholder="Title"
           onChange={handleInputChange}
         />
+        <label name="photo" className="photo-input-label" htmlFor="photo">
+          Photo
+          <input
+            id="photo"
+            style={{ display: 'none' }}
+            name="photo"
+            type="file"
+            placeholder="Photo"
+            onChange={handleInputChange}
+          />
+        </label>
+
         <input
-          name="photo"
+          name="location"
           type="text"
-          placeholder="Photo"
-          onChange={handleInputChange}
-        />
-        <input
-          name="city"
-          type="text"
-          placeholder="City"
+          placeholder="Location"
           onChange={handleInputChange}
         />
         <input

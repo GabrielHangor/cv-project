@@ -19,7 +19,11 @@ class App extends Component {
     const value = e.target.value;
 
     this.setState({
-      mainInfo: { ...this.state.mainInfo, [name]: value },
+      mainInfo: {
+        ...this.state.mainInfo,
+        [name]:
+          name === 'photo' ? URL.createObjectURL(e.target.files[0]) : value,
+      },
     });
   }
 
