@@ -1,11 +1,16 @@
 import React from 'react';
+import anonymous from './anonymous-avatar.png'
 
 function PreviewPersonal({ mainInfoState }) {
   const { photo, location, phoneNumber, email } = mainInfoState;
 
   return (
     <div className="preview-personal">
-      <img className="preview-photo" src={photo} alt="" />
+      <img
+        className="preview-photo"
+        src={photo ? photo : anonymous}
+        alt=""
+      />
       <h4>Personal Details</h4>
       <div className="personal-details">
         <section>

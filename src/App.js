@@ -3,6 +3,7 @@ import MainInfo from './Components/InputForm/MainInfo';
 import PreviewHeader from './Components/Preview/PreviewHeader';
 import PreviewPersonal from './Components/Preview/PreviewPersonal';
 import PreviewMain from './Components/Preview/PreviewMain';
+import Experience from './Components/InputForm/Experience';
 
 class App extends Component {
   constructor() {
@@ -39,6 +40,7 @@ class App extends Component {
               handleInputChange={this.handleInputChange}
               mainInfoState={this.state.mainInfo}
             />
+            <Experience />
           </div>
           <div className="preview">
             <PreviewHeader mainInfoState={this.state.mainInfo} />
