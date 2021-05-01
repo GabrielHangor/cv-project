@@ -10,6 +10,7 @@ class Experience extends Component {
 
     this.toggleInput = this.toggleInput.bind(this);
     this.submitInput = this.submitInput.bind(this);
+    this.closeInput = this.closeInput.bind(this);
   }
 
   toggleInput() {
@@ -22,6 +23,10 @@ class Experience extends Component {
     this.props.submitExperience();
   }
 
+  closeInput() {
+    this.setState({ toggleInput: false });
+  }
+
   render() {
     return (
       <div className="form-group">
@@ -30,12 +35,21 @@ class Experience extends Component {
           <ExperienceInput
             submitInput={this.submitInput}
             handleInputChange={this.props.handleInputChange}
+            closeInput={this.closeInput}
           />
         )}
         {this.state.toggleInput === false ? (
-          <button onClick={this.toggleInput} className="add-btn">
-            ADD
-          </button>
+          <div className='form-input'>
+            <button onClick={this.toggleInput} className="add-btn">
+              ADD
+            </button>
+            <button
+              onClick={this.props.deletePreviousExperience}
+              className="cancel-btn"
+            >
+              Delete The Last
+            </button>
+          </div>
         ) : null}
       </div>
     );

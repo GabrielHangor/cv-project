@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ExperienceInput({ handleInputChange, submitInput }) {
+function ExperienceInput({ handleInputChange, submitInput, closeInput }) {
   return (
     <form onSubmit={submitInput} className="form-input">
       <input
@@ -40,6 +40,9 @@ function ExperienceInput({ handleInputChange, submitInput }) {
       />
       <button type="submit" className="add-btn">
         Submit
+      </button>
+      <button onClick={closeInput} type="button" className="cancel-btn">
+        Cancel
       </button>
     </form>
   );

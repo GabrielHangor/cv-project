@@ -19,6 +19,7 @@ class App extends Component {
       this
     );
     this.submitExperience = this.submitExperience.bind(this);
+    this.deletePreviousExperience = this.deletePreviousExperience.bind(this);
   }
 
   handleInputChange(e) {
@@ -50,6 +51,14 @@ class App extends Component {
     });
   }
 
+  deletePreviousExperience() {
+    const array = [...this.state.experienceArr];
+    array.pop();
+    this.setState({
+      experienceArr: array,
+    });
+  }
+
   render() {
     return (
       <div className="container">
@@ -62,6 +71,7 @@ class App extends Component {
             <Experience
               handleInputChange={this.handleExperienceInputChange}
               submitExperience={this.submitExperience}
+              deletePreviousExperience={this.deletePreviousExperience}
             />
           </div>
           <div className="preview">
