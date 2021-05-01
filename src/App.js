@@ -10,9 +10,15 @@ class App extends Component {
     super();
     this.state = {
       mainInfo: {},
+      currentExperience: {},
+      experienceObj: [],
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleExperienceInputChange = this.handleExperienceInputChange.bind(
+      this
+    );
+    this.submitExperience = this.submitExperience.bind(this);
   }
 
   handleInputChange(e) {
@@ -28,6 +34,25 @@ class App extends Component {
     });
   }
 
+  handleExperienceInputChange(e) {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    this.setState({
+      currentExperience: { ...this.state.currentExperience, [name]: value },
+    });
+  }
+
+  submitExperience() {
+    this.setState({
+      experienceObj: [
+        ...this.state.experienceObj,
+        this.state.currentExperience,
+      ],
+      currentExperience: {},
+    });
+  }
+
   render() {
     return (
       <div className="container">
@@ -36,11 +61,11 @@ class App extends Component {
         </header>
         <main className="inner-container">
           <div className="input-form">
-            <MainInfo
-              handleInputChange={this.handleInputChange}
-              mainInfoState={this.state.mainInfo}
+            <MainInfo handleInputChange={this.handleInputChange} />
+            <Experience
+              handleInputChange={this.handleExperienceInputChange}
+              submitExperience={this.submitExperience}
             />
-            <Experience />
           </div>
           <div className="preview">
             <PreviewHeader mainInfoState={this.state.mainInfo} />

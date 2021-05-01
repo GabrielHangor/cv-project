@@ -109,6 +109,7 @@ button {
   cursor: pointer;
   border: none;
   transition: all ease-in-out 0.2s;
+  margin-top: 0.5rem;
 }
 
 .add-btn:hover {
