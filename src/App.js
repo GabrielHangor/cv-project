@@ -10,8 +10,8 @@ class App extends Component {
     super();
     this.state = {
       mainInfo: {},
-      currentExperience: {},
-      experienceObj: [],
+      experienceObj: {},
+      experienceArr: [],
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -39,17 +39,14 @@ class App extends Component {
     const value = e.target.value;
 
     this.setState({
-      currentExperience: { ...this.state.currentExperience, [name]: value },
+      experienceObj: { ...this.state.experienceObj, [name]: value },
     });
   }
 
   submitExperience() {
     this.setState({
-      experienceObj: [
-        ...this.state.experienceObj,
-        this.state.currentExperience,
-      ],
-      currentExperience: {},
+      experienceArr: [...this.state.experienceArr, this.state.experienceObj],
+      experienceObj: {},
     });
   }
 

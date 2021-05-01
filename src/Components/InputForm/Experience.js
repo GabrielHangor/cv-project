@@ -16,7 +16,8 @@ class Experience extends Component {
     this.setState({ toggleInput: true });
   }
 
-  submitInput() {
+  submitInput(e) {
+    e.preventDefault();
     this.setState({ toggleInput: false });
     this.props.submitExperience();
   }
@@ -26,18 +27,16 @@ class Experience extends Component {
       <div className="form-group">
         <h2>Experience</h2>
         {this.state.toggleInput && (
-          <ExperienceInput handleInputChange={this.props.handleInputChange} />
+          <ExperienceInput
+            submitInput={this.submitInput}
+            handleInputChange={this.props.handleInputChange}
+          />
         )}
         {this.state.toggleInput === false ? (
           <button onClick={this.toggleInput} className="add-btn">
             ADD
           </button>
         ) : null}
-        {this.state.toggleInput && (
-          <button onClick={this.submitInput} className="add-btn">
-            Submit
-          </button>
-        )}
       </div>
     );
   }
