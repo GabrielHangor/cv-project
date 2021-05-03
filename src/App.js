@@ -27,6 +27,7 @@ class App extends Component {
       this
     );
     this.submitEducation = this.submitEducation.bind(this);
+    this.deletePreviousEducation = this.deletePreviousEducation.bind(this);
   }
 
   handleInputChange(e) {
@@ -115,6 +116,7 @@ class App extends Component {
             <div className="preview-inner">
               <PreviewMain
                 experienceArr={this.state.experienceArr}
+                educationArr={this.state.educationArr}
                 description={this.state.mainInfo.description}
               />
               <PreviewPersonal mainInfoState={this.state.mainInfo} />
