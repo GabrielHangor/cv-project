@@ -127,6 +127,17 @@ button {
   background-color: #ff1b1b;
 }
 
+.text-area {
+  width: 95%;
+  height: 80px;
+  border-radius: 6px;
+  padding-left: 5px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  border: none;
+  resize: none;
+}
+
 /* Preview */
 
 .preview {
@@ -184,6 +195,7 @@ button {
   height: 100%;
   display: flex;
   flex-direction: column;
+  padding: 1rem;
 }
 
 .preview-photo {
@@ -196,4 +208,42 @@ button {
   flex-direction: column;
   width: 100%;
   row-gap: 0.5rem;
+}
+
+.preview-description {
+  display: flex;
+  flex-direction: column;
+}
+
+.description {
+  font-style: italic;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.preview-experience {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  row-gap: 0.7rem;
+}
+
+.experience-obj {
+  display: flex;
+  width: 100%;
+}
+
+.experience-period {
+  width: 30%;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.experience-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }

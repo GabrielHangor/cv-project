@@ -53,9 +53,10 @@ function MainInfo({ handleInputChange }) {
           placeholder="Email"
           onChange={handleInputChange}
         />
-        <input
+        <textarea
+        className='text-area'
           name="description"
-          type="textarea"
+          type="text"
           placeholder="Description"
           onChange={handleInputChange}
         />

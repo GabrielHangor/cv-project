@@ -77,7 +77,10 @@ class App extends Component {
           <div className="preview">
             <PreviewHeader mainInfoState={this.state.mainInfo} />
             <div className="preview-inner">
-              <PreviewMain />
+              <PreviewMain
+                experienceArr={this.state.experienceArr}
+                description={this.state.mainInfo.description}
+              />
               <PreviewPersonal mainInfoState={this.state.mainInfo} />
             </div>
           </div>
