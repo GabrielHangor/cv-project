@@ -4,6 +4,7 @@ import PreviewHeader from './Components/Preview/PreviewHeader';
 import PreviewPersonal from './Components/Preview/PreviewPersonal';
 import PreviewMain from './Components/Preview/PreviewMain';
 import Experience from './Components/InputForm/Experience';
+import Education from './Components/InputForm/Education';
 
 class App extends Component {
   constructor() {
@@ -12,6 +13,8 @@ class App extends Component {
       mainInfo: {},
       experienceObj: {},
       experienceArr: [],
+      educationObj: {},
+      educationArr: [],
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -20,6 +23,10 @@ class App extends Component {
     );
     this.submitExperience = this.submitExperience.bind(this);
     this.deletePreviousExperience = this.deletePreviousExperience.bind(this);
+    this.handleEducationInputChange = this.handleEducationInputChange.bind(
+      this
+    );
+    this.submitEducation = this.submitEducation.bind(this);
   }
 
   handleInputChange(e) {
@@ -44,10 +51,26 @@ class App extends Component {
     });
   }
 
+  handleEducationInputChange(e) {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    this.setState({
+      educationObj: { ...this.state.educationObj, [name]: value },
+    });
+  }
+
   submitExperience() {
     this.setState({
       experienceArr: [...this.state.experienceArr, this.state.experienceObj],
       experienceObj: {},
+    });
+  }
+
+  submitEducation() {
+    this.setState({
+      educationArr: [...this.state.educationArr, this.state.educationObj],
+      educationObj: {},
     });
   }
 
@@ -56,6 +79,14 @@ class App extends Component {
     array.pop();
     this.setState({
       experienceArr: array,
+    });
+  }
+
+  deletePreviousEducation() {
+    const array = [...this.state.educationArr];
+    array.pop();
+    this.setState({
+      educationArr: array,
     });
   }
 
@@ -72,6 +103,11 @@ class App extends Component {
               handleInputChange={this.handleExperienceInputChange}
               submitExperience={this.submitExperience}
               deletePreviousExperience={this.deletePreviousExperience}
+            />
+            <Education
+              handleInputChange={this.handleEducationInputChange}
+              submitEducation={this.submitEducation}
+              deletePreviousEducation={this.deletePreviousEducation}
             />
           </div>
           <div className="preview">

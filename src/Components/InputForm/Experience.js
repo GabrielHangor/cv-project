@@ -39,7 +39,7 @@ class Experience extends Component {
           />
         )}
         {this.state.toggleInput === false ? (
-          <div className='form-input'>
+          <div className="form-input">
             <button onClick={this.toggleInput} className="add-btn">
               ADD
             </button>
