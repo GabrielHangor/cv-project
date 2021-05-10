@@ -1,59 +1,41 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import ExperienceInput from './ExperienceInput';
 
-class Experience extends Component {
-  constructor() {
-    super();
-    this.state = {
-      toggleInput: false,
-    };
+function Experience({
+  handleInputChange,
+  deletePreviousExperience,
+  submitExperience,
+}) {
+  const [toggleInput, setToggleInput] = useState(false);
 
-    this.toggleInput = this.toggleInput.bind(this);
-    this.submitInput = this.submitInput.bind(this);
-    this.closeInput = this.closeInput.bind(this);
-  }
-
-  toggleInput() {
-    this.setState({ toggleInput: true });
-  }
-
-  submitInput(e) {
+  const submitInput = (e) => {
     e.preventDefault();
-    this.setState({ toggleInput: false });
-    this.props.submitExperience();
-  }
+    setToggleInput(false);
+    submitExperience();
+  };
 
-  closeInput() {
-    this.setState({ toggleInput: false });
-  }
-
-  render() {
-    return (
-      <div className="form-group">
-        <h2>Experience</h2>
-        {this.state.toggleInput && (
-          <ExperienceInput
-            submitInput={this.submitInput}
-            handleInputChange={this.props.handleInputChange}
-            closeInput={this.closeInput}
-          />
-        )}
-        {this.state.toggleInput === false ? (
-          <div className="form-input">
-            <button onClick={this.toggleInput} className="add-btn">
-              ADD
-            </button>
-            <button
-              onClick={this.props.deletePreviousExperience}
-              className="cancel-btn"
-            >
-              Delete The Last
-            </button>
-          </div>
-        ) : null}
-      </div>
-    );
-  }
+  return (
+    <div className="form-group">
+      <h2>Experience</h2>
+      {toggleInput && (
+        <ExperienceInput
+          submitInput={submitInput}
+          handleInputChange={handleInputChange}
+          closeInput={() => setToggleInput(false)}
+        />
+      )}
+      {toggleInput === false ? (
+        <div className="form-input">
+          <button onClick={() => setToggleInput(true)} className="add-btn">
+            ADD
+          </button>
+          <button onClick={deletePreviousExperience} className="cancel-btn">
+            Delete The Last
+          </button>
+        </div>
+      ) : null}
+    </div>
+  );
 }
 
 export default Experience;
