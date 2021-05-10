@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import MainInfo from './Components/InputForm/MainInfo';
 import PreviewHeader from './Components/Preview/PreviewHeader';
 import PreviewPersonal from './Components/Preview/PreviewPersonal';
@@ -6,126 +6,92 @@ import PreviewMain from './Components/Preview/PreviewMain';
 import Experience from './Components/InputForm/Experience';
 import Education from './Components/InputForm/Education';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      mainInfo: {},
-      experienceObj: {},
-      experienceArr: [],
-      educationObj: {},
-      educationArr: [],
-    };
+function App() {
+  const [mainInfo, setMainInfo] = useState({});
+  const [experienceObj, setExperienceObj] = useState({});
+  const [experienceArr, setExperienceArr] = useState([]);
+  const [educationObj, setEducationObj] = useState({});
+  const [educationArr, setEducationArr] = useState([]);
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleExperienceInputChange = this.handleExperienceInputChange.bind(
-      this
-    );
-    this.submitExperience = this.submitExperience.bind(this);
-    this.deletePreviousExperience = this.deletePreviousExperience.bind(this);
-    this.handleEducationInputChange = this.handleEducationInputChange.bind(
-      this
-    );
-    this.submitEducation = this.submitEducation.bind(this);
-    this.deletePreviousEducation = this.deletePreviousEducation.bind(this);
-  }
-
-  handleInputChange(e) {
+  const handleInputChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
 
-    this.setState({
-      mainInfo: {
-        ...this.state.mainInfo,
-        [name]:
-          name === 'photo' ? URL.createObjectURL(e.target.files[0]) : value,
-      },
+    setMainInfo({
+      ...mainInfo,
+      [name]: name === 'photo' ? URL.createObjectURL(e.target.files[0]) : value,
     });
-  }
+  };
 
-  handleExperienceInputChange(e) {
+  const handleExperienceInputChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
 
-    this.setState({
-      experienceObj: { ...this.state.experienceObj, [name]: value },
-    });
-  }
+    setExperienceObj({ ...experienceObj, [name]: value });
+  };
 
-  handleEducationInputChange(e) {
+  const handleEducationInputChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
 
-    this.setState({
-      educationObj: { ...this.state.educationObj, [name]: value },
-    });
-  }
+    setEducationObj({ ...educationObj, [name]: value });
+  };
 
-  submitExperience() {
-    this.setState({
-      experienceArr: [...this.state.experienceArr, this.state.experienceObj],
-      experienceObj: {},
-    });
-  }
+  const submitExperience = () => {
+    setExperienceArr([...experienceArr, experienceObj]);
+    setExperienceObj({});
+  };
 
-  submitEducation() {
-    this.setState({
-      educationArr: [...this.state.educationArr, this.state.educationObj],
-      educationObj: {},
-    });
-  }
+  const submitEducation = () => {
+    setEducationArr([...educationArr, educationObj]);
+    setExperienceObj({});
+  };
 
-  deletePreviousExperience() {
-    const array = [...this.state.experienceArr];
+  const deletePreviousExperience = () => {
+    const array = experienceArr;
     array.pop();
-    this.setState({
-      experienceArr: array,
-    });
-  }
+    setExperienceArr(array);
+  };
 
-  deletePreviousEducation() {
-    const array = [...this.state.educationArr];
+  const deletePreviousEducation = () => {
+    const array = educationArr;
     array.pop();
-    this.setState({
-      educationArr: array,
-    });
-  }
+    setEducationArr(array);
+  };
 
-  render() {
-    return (
-      <div className="container">
-        <header className="header">
-          <h1>CV APP</h1>
-        </header>
-        <main className="inner-container">
-          <div className="input-form">
-            <MainInfo handleInputChange={this.handleInputChange} />
-            <Experience
-              handleInputChange={this.handleExperienceInputChange}
-              submitExperience={this.submitExperience}
-              deletePreviousExperience={this.deletePreviousExperience}
+  return (
+    <div className="container">
+      <header className="header">
+        <h1>CV APP</h1>
+      </header>
+      <main className="inner-container">
+        <div className="input-form">
+          <MainInfo handleInputChange={handleInputChange} />
+          <Experience
+            handleInputChange={handleExperienceInputChange}
+            submitExperience={submitExperience}
+            deletePreviousExperience={deletePreviousExperience}
+          />
+          <Education
+            handleInputChange={handleEducationInputChange}
+            submitEducation={submitEducation}
+            deletePreviousEducation={deletePreviousEducation}
+          />
+        </div>
+        <div className="preview">
+          <PreviewHeader mainInfoState={mainInfo} />
+          <div className="preview-inner">
+            <PreviewMain
+              experienceArr={experienceArr}
+              educationArr={educationArr}
+              description={mainInfo.description}
             />
-            <Education
-              handleInputChange={this.handleEducationInputChange}
-              submitEducation={this.submitEducation}
-              deletePreviousEducation={this.deletePreviousEducation}
-            />
+            <PreviewPersonal mainInfoState={mainInfo} />
           </div>
-          <div className="preview">
-            <PreviewHeader mainInfoState={this.state.mainInfo} />
-            <div className="preview-inner">
-              <PreviewMain
-                experienceArr={this.state.experienceArr}
-                educationArr={this.state.educationArr}
-                description={this.state.mainInfo.description}
-              />
-              <PreviewPersonal mainInfoState={this.state.mainInfo} />
-            </div>
-          </div>
-        </main>
-      </div>
-    );
-  }
+        </div>
+      </main>
+    </div>
+  );
 }
 
 export default App;

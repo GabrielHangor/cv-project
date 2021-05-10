@@ -10,8 +10,8 @@ function Experience({
 
   const submitInput = (e) => {
     e.preventDefault();
-    setToggleInput(false);
     submitExperience();
+    setToggleInput(false);
   };
 
   return (
@@ -29,7 +29,10 @@ function Experience({
           <button onClick={() => setToggleInput(true)} className="add-btn">
             ADD
           </button>
-          <button onClick={deletePreviousExperience} className="cancel-btn">
+          <button
+            onClick={deletePreviousExperience}
+            className="cancel-btn"
+          >
             Delete The Last
           </button>
         </div>
