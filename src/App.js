@@ -44,17 +44,17 @@ function App() {
 
   const submitEducation = () => {
     setEducationArr([...educationArr, educationObj]);
-    setExperienceObj({});
+    setEducationObj({});
   };
 
   const deletePreviousExperience = () => {
-    const array = experienceArr;
+    const array = [...experienceArr];
     array.pop();
     setExperienceArr(array);
   };
 
   const deletePreviousEducation = () => {
-    const array = educationArr;
+    const array = [...educationArr];
     array.pop();
     setEducationArr(array);
   };
